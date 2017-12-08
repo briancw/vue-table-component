@@ -112,7 +112,7 @@
             this.sort.fieldName = this.sortBy;
             this.sort.order = this.sortOrder;
 
-            this.restoreState();
+            // this.restoreState();
         },
 
         async mounted() {
@@ -226,9 +226,10 @@
             },
 
             storageKey() {
-                return this.cacheKey
-                    ? `vue-table-component.${this.cacheKey}`
-                    : `vue-table-component.${window.location.host}${window.location.pathname}${this.cacheKey}`;
+                return null
+                // return this.cacheKey
+                //     ? `vue-table-component.${this.cacheKey}`
+                //     : `vue-table-component.${window.location.host}${window.location.pathname}${this.cacheKey}`;
             },
         },
 
@@ -298,21 +299,21 @@
             },
 
             saveState() {
-                expiringStorage.set(this.storageKey, pick(this.$data, ['filter', 'sort']), this.cacheLifetime);
+                // expiringStorage.set(this.storageKey, pick(this.$data, ['filter', 'sort']), this.cacheLifetime);
             },
 
-            restoreState() {
-                const previousState = expiringStorage.get(this.storageKey);
+            // restoreState() {
+            //     const previousState = expiringStorage.get(this.storageKey);
 
-                if (previousState === null) {
-                    return;
-                }
+            //     if (previousState === null) {
+            //         return;
+            //     }
 
-                this.sort = previousState.sort;
-                this.filter = previousState.filter;
+            //     this.sort = previousState.sort;
+            //     this.filter = previousState.filter;
 
-                this.saveState();
-            },
+            //     this.saveState();
+            // },
 
 			emitRowClick(row) {
 				this.$emit('rowClick', row);
